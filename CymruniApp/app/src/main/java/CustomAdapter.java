@@ -18,16 +18,16 @@ public class CustomAdapter {
         inflater = LayoutInflater.from(c);
     }
 
-//    public void addItem(String item) {
-//        Long i = this.idh.addItem(item);
-//        this.dataSource.add(item);
-//        notifyDataSetChanged();
-//    }
-//    public void remove(int i) {
-//        idh.removeItem(String.valueOf(i));
-//        this.dataSource.remove(i);
-//        notifyDataSetChanged();
-//    }
+    public void addItem(String item) {
+        Long i = this.idh.addItem(item);
+        this.dataSource.add(item);
+        notifyDataSetChanged();
+    }
+    public void remove(int i) {
+        idh.removeItem(String.valueOf(i));
+        this.dataSource.remove(i);
+        notifyDataSetChanged();
+    }
 //    public View getView(int i, View view, ViewGroup viewGroup) {
 //
 //        ViewHolder vh = null;
