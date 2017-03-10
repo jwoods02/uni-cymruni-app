@@ -35,29 +35,29 @@ public class DBConnector {
         db.close();
         return deleted;
     }
-//
-//    public Map<Long, String> getItems(String searchTerm) {
-//        SQLiteDatabase db = sd.getWritableDatabase();
-//        String[] cols = {ItemsDBHelper.COL_ID, ItemsDBHelper.COL_Item};
-//        String where = null;
-//        String[] whereArgs = null;
-//        if (searchTerm != null) {
-//            where = ItemsDBHelper.COL_Item + " = ?";
-//            whereArgs = new String[]{searchTerm};
-//        }
-//        Cursor c = db.query(ItemsDBHelper.TABLE_NAME, cols, where, whereArgs, null, null, null);
-//        c.moveToFirst();
-//
-//        Map<Long, String> items = new HashMap<>();
-//        if(c.getCount() != 0) {
-//            do {
-//                long id = c.getLong(0);
-//                String item = c.getString(1);
-//                items.put(id, item);
-//            } while (c.moveToNext());
-//        }
-//
-//        return items;
-//
-//    }
+
+    public Map<Long, String> getItems(String searchTerm) {
+        SQLiteDatabase db = sd.getWritableDatabase();
+        String[] cols = {ItemsDBHelper.COL_ID, ItemsDBHelper.COL_Item};
+        String where = null;
+        String[] whereArgs = null;
+        if (searchTerm != null) {
+            where = ItemsDBHelper.COL_Item + " = ?";
+            whereArgs = new String[]{searchTerm};
+        }
+        Cursor c = db.query(ItemsDBHelper.TABLE_NAME, cols, where, whereArgs, null, null, null);
+        c.moveToFirst();
+
+        Map<Long, String> items = new HashMap<>();
+        if(c.getCount() != 0) {
+            do {
+                long id = c.getLong(0);
+                String item = c.getString(1);
+                items.put(id, item);
+            } while (c.moveToNext());
+        }
+
+        return items;
+
+    }
 }
