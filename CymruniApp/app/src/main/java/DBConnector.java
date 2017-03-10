@@ -18,23 +18,23 @@ public class DBConnector {
         sd = new ItemsDBHelper(ctx);
     }
 
-//    public long addItem(String item) {
-//        SQLiteDatabase db = sd.getWritableDatabase();
-//        ContentValues cv = new ContentValues();
-//        cv.put("Item_Txt", item);
-//        long rowId = db.insert(ItemsDBHelper.TABLE_NAME, null, cv);
-//        db.close();
-//        return rowId;
-//    }
-//
-//    public int removeItem(String id) {
-//        SQLiteDatabase db = sd.getWritableDatabase();
-//        String where = ItemsDBHelper.COL_ID + " = ?";
-//        String[] args = {id};
-//        int deleted = db.delete(ItemsDBHelper.TABLE_NAME, where, args);
-//        db.close();
-//        return deleted;
-//    }
+    public long addItem(String item) {
+        SQLiteDatabase db = sd.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("Item_Txt", item);
+        long rowId = db.insert(ItemsDBHelper.TABLE_NAME, null, cv);
+        db.close();
+        return rowId;
+    }
+
+    public int removeItem(String id) {
+        SQLiteDatabase db = sd.getWritableDatabase();
+        String where = ItemsDBHelper.COL_ID + " = ?";
+        String[] args = {id};
+        int deleted = db.delete(ItemsDBHelper.TABLE_NAME, where, args);
+        db.close();
+        return deleted;
+    }
 //
 //    public Map<Long, String> getItems(String searchTerm) {
 //        SQLiteDatabase db = sd.getWritableDatabase();
