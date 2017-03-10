@@ -28,19 +28,19 @@ public class CustomAdapter {
         this.dataSource.remove(i);
         notifyDataSetChanged();
     }
-//    public View getView(int i, View view, ViewGroup viewGroup) {
-//
-//        ViewHolder vh = null;
-//
-//        if(view == null) {
-//            vh = new ViewHolder();
-//            view = inflater.inflate(R.layout.row, null);
-//            vh.textView = (TextView) view.findViewById(R.id.textView);
-//            view.setTag(vh);
-//        }else{
-//            vh = (ViewHolder) view.getTag();
-//        }
-//        vh.textView.setText(dataSource.get(i));
-//        return view;
+    public View getView(int i, View view, ViewGroup viewGroup) {
+
+        ViewHolder vh = null;
+
+        if(view == null) {
+            vh = new ViewHolder();
+            view = inflater.inflate(R.layout.row, null);
+            vh.textView = (TextView) view.findViewById(R.id.textView);
+            view.setTag(vh);
+        }else{
+            vh = (ViewHolder) view.getTag();
+        }
+        vh.textView.setText(dataSource.get(i));
+        return view;
     }
 }
