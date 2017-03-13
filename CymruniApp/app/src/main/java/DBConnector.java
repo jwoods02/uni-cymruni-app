@@ -7,19 +7,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by c1629177 on 10/03/2017.
+ * Created by encima on 16/12/2016.
  */
+
 public class DBConnector {
+
     ItemsDBHelper sd;
     String TABLE_NAME = "ListItems";
     String COL_ID = "Item_ID";
     String COL_Item = "Item_Txt";
+
     public DBConnector(Context ctx) {
         sd = new ItemsDBHelper(ctx);
     }
 
     public long addItem(String item) {
-        SQLiteDatabase db = sd.getWritableDatabase();
+        SQLiteDatabase db = sd.getWritableDatabase(writableDatabase);
         ContentValues cv = new ContentValues();
         cv.put("Item_Txt", item);
         long rowId = db.insert(ItemsDBHelper.TABLE_NAME, null, cv);
@@ -27,8 +30,9 @@ public class DBConnector {
         return rowId;
     }
 
+
     public int removeItem(String id) {
-        SQLiteDatabase db = sd.getWritableDatabase();
+        SQLiteDatabase db = sd.getWritableDatabase(writableDatabase);
         String where = ItemsDBHelper.COL_ID + " = ?";
         String[] args = {id};
         int deleted = db.delete(ItemsDBHelper.TABLE_NAME, where, args);
@@ -37,7 +41,7 @@ public class DBConnector {
     }
 
     public Map<Long, String> getItems(String searchTerm) {
-        SQLiteDatabase db = sd.getWritableDatabase();
+        SQLiteDatabase db = sd.getWritableDatabase(writableDatabase);
         String[] cols = {ItemsDBHelper.COL_ID, ItemsDBHelper.COL_Item};
         String where = null;
         String[] whereArgs = null;

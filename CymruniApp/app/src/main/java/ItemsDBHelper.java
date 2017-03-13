@@ -13,9 +13,13 @@ public class ItemsDBHelper  /* public class ItemsDBHelper extends SQLiteOpenHelp
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Items.db";
 
-    public ItemsDBHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public ItemsDBHelper(Object ctx) {
+
     }
+
+    //    public ItemsDBHelper(Context context) {
+//        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+//    }
     public void onCreate(SQLiteDatabase db) {
         String create = MessageFormat.format("CREATE TABLE IF NOT EXISTS {0}({1} INTEGER PRIMARY KEY AUTOINCREMENT, {2} VARCHAR);", TABLE_NAME, COL_ID, COL_Item);
         db.execSQL(create);
@@ -28,5 +32,10 @@ public class ItemsDBHelper  /* public class ItemsDBHelper extends SQLiteOpenHelp
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
+    }
+
+    public SQLiteDatabase getWritableDatabase(SQLiteDatabase writableDatabase) {
+
+        return writableDatabase;
     }
 }
