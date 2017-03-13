@@ -21,7 +21,7 @@ public class DBConnector {
         sd = new ItemsDBHelper(ctx);
     }
 
-    public long addItem(String item) {
+    public long addItem(String item, SQLiteDatabase writableDatabase) {
         SQLiteDatabase db = sd.getWritableDatabase(writableDatabase);
         ContentValues cv = new ContentValues();
         cv.put("Item_Txt", item);
@@ -31,7 +31,7 @@ public class DBConnector {
     }
 
 
-    public int removeItem(String id) {
+    public int removeItem(String id, SQLiteDatabase writableDatabase) {
         SQLiteDatabase db = sd.getWritableDatabase(writableDatabase);
         String where = ItemsDBHelper.COL_ID + " = ?";
         String[] args = {id};
@@ -40,7 +40,7 @@ public class DBConnector {
         return deleted;
     }
 
-    public Map<Long, String> getItems(String searchTerm) {
+    public Map<Long, String> getItems(String searchTerm, SQLiteDatabase writableDatabase) {
         SQLiteDatabase db = sd.getWritableDatabase(writableDatabase);
         String[] cols = {ItemsDBHelper.COL_ID, ItemsDBHelper.COL_Item};
         String where = null;
