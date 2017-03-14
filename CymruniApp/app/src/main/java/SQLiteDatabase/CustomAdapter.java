@@ -11,7 +11,7 @@ import java.util.Map;
  */
 //public class CustomAdapter {
 //    {
-//        idh = new DBConnector(c);
+//        idh = new SQLiteDatabase.DBConnector(c);
 //        Map<Long, String> items = idh.getItems(null);
 //        this.dataSource = new ArrayList<>();
 //        this.dataSource.addAll(items.values());

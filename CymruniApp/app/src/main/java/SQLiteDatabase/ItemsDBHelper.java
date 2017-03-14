@@ -1,3 +1,5 @@
+package SQLiteDatabase;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -6,7 +8,7 @@ import java.text.MessageFormat;
 /**
  * Created by c1629177 on 10/03/2017.
  */
-public class ItemsDBHelper  /* public class ItemsDBHelper extends SQLiteOpenHelper */{
+public class ItemsDBHelper  /* public class SQLiteDatabase.ItemsDBHelper extends SQLiteDatabase.SQLiteOpenHelper */{
     public static final String TABLE_NAME = "ListItems";
     public static final String COL_ID = "Item_ID";
     public static final String COL_Item = "Item_Txt";
@@ -17,7 +19,7 @@ public class ItemsDBHelper  /* public class ItemsDBHelper extends SQLiteOpenHelp
 
     }
 
-    //    public ItemsDBHelper(Context context) {
+    //    public SQLiteDatabase.ItemsDBHelper(Context context) {
 //        super(context, DATABASE_NAME, null, DATABASE_VERSION);
 //    }
     public void onCreate(SQLiteDatabase db) {
