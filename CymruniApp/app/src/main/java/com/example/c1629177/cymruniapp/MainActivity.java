@@ -1,10 +1,12 @@
 package com.example.c1629177.cymruniapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -45,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
                      }
                  });
 
-
+        Button loginBtn = (Button) findViewById(R.id.loginBtn);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        }
     }
-}
