@@ -38,18 +38,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps2);
 
         Button btnMap = (Button) findViewById(R.id.btnMap);
+        Button btnHybrid = (Button) findViewById(R.id.btnHybrid);
+        Button btnSatellite = (Button) findViewById(R.id.btnSatellite);
        /* btnMap.setOnClickListener((v) -> {
             if(mapReady)
                 mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         });
 */
+        // anonymous class syntax(same as lambda)
         btnMap.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mapReady)
-                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);            }
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);            }
         });
 
+        btnSatellite.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v){
+                if(mapReady)
+                    mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            }
+        });
 
+        btnHybrid.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (mapReady)
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            }
+        });
     }
 
     /**
@@ -71,4 +86,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         CameraPosition target = CameraPosition.builder().target(studentUnion).zoom(14).build();
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(target));
     }
+
+    MarkerOptions HoffiCoffee =
+            new MarkerOptions()
+            .position(new LatLng(51.489635, -3.182219))
+            .title("Hoffi Coffee");
+
+    MarkerOptions Costa =
+            new MarkerOptions()
+            .position(new LatLng(51.488396, -3.178465))
+            .title("Costa Coffee");
+
+    
+
+
+
+
 }
