@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i1);
         finish();
         // Dummy list, needs link to database
-        String[] welshSpeakingBusinesses = {"Hpffi Coffi", "Costa", "National Software Academy",
+        String[] welshSpeakingBusinesses = {"Hoffi Coffi", "Costa", "National Software Academy",
         "Applingua"};
 
 
