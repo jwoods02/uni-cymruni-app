@@ -1,8 +1,11 @@
 package com.example.c1629177.cymruniapp;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -15,6 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    Boolean mapReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        setContentView(R.layout.activity_maps2);
+
+        Button btnMap = (Button) findViewById(R.id.btnMap);
+       /* btnMap.setOnClickListener((v) -> {
+            if(mapReady)
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        });
+*/
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(mapReady)
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);            }
+        });
+
+
+    }
 
     /**
      * Manipulates the map once available.
@@ -41,9 +64,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mapReady =true;
 
         LatLng studentUnion = new LatLng(51.488373, -3.177478);
         mMap.addMarker(new MarkerOptions().position(studentUnion).title("Cardiff University Student Union"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(studentUnion));
+        CameraPosition target = CameraPosition.builder().target(studentUnion).zoom(14).build();
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(target));
     }
 }
