@@ -17,7 +17,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Intent i1 = new Intent(MainActivity.this, MapsActivity.class);;
+        startActivity(i1);
+        finish();
         // Dummy list, needs link to database
         String[] welshSpeakingBusinesses = {"Hpffi Coffi", "Costa", "National Software Academy",
         "Applingua"};
