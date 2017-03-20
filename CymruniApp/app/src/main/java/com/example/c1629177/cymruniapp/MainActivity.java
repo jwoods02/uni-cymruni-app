@@ -11,27 +11,25 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Intent i1 = new Intent(MainActivity.this, MapsActivity.class);;
-        startActivity(i1);
-        finish();
-        // Dummy list, needs link to database
-        String[] welshSpeakingBusinesses = {"Hoffi Coffi", "Costa", "National Software Academy",
-        "Applingua"};
+        welshSpeakingBusinessView = (ListView) findViewById(R.id.welshSpeakingBusinessView);
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        databaseAccess.open();
+        List<String> CymruNi = databaseAccess.getQuotes();
+        databaseAccess.close();
 
-
-        // simple_list_item_1 could be replaced with custom style in xml
-        ListAdapter welshSpeakingBusinessAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-                welshSpeakingBusinesses);
-
-        ListView welshSpeakingBusinessView = (ListView) findViewById(R.id.welshSpeakingBusinessList);
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CymruNi);
         welshSpeakingBusinessView.setAdapter(welshSpeakingBusinessAdapter);
+
 
         // Basic OnItemClickListener to show how you can interact with user based on item clicked.
         welshSpeakingBusinessView.setOnItemClickListener(
