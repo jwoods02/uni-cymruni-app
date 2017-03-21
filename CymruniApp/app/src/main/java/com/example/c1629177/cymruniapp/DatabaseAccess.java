@@ -60,9 +60,21 @@ public class DatabaseAccess {
      *
      * @return a List of quotes
      */
-    public List<String> getQuotes() {
+    public List<String> getNames() {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM CymruNi", null);
+        Cursor cursor = database.rawQuery("SELECT \"shopName-en\" FROM CymruNi", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<String> getBeacons() {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT \"BeaconID\" FROM CymruNi", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
@@ -72,3 +84,7 @@ public class DatabaseAccess {
         return list;
     }
 }
+
+
+
+

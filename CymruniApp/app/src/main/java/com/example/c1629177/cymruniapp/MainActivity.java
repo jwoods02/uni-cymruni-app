@@ -11,6 +11,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,11 +25,28 @@ public class MainActivity extends AppCompatActivity {
         Intent i1 = new Intent(MainActivity.this, MapsActivity.class);;
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        List<String> CymruNi = databaseAccess.getQuotes();
+        List<String> DBNames = databaseAccess.getNames();
+        // List<String> DBBeacons = databaseAccess.getBeacons();
         databaseAccess.close();
 
+
+
+        String[] beaconsDetected = {"ABC-12D-123", "WSE-234-DBE"};
+
+        List<String> DBBeacons = Arrays.asList("ABC-12D-123", "FHD-24F-EF8", "WSE-234-DBE");
+
+        List<String> printedBusinessList = new ArrayList<>();
+
+        for (int i=0; i <DBNames.size(); i++) {
+            if (Arrays.asList(beaconsDetected).contains(DBBeacons.get(i))) {
+                printedBusinessList.add(DBNames.get(i));
+            }
+        }
+
+
+
         ListView welshSpeakingBusinessView = (ListView) findViewById(R.id.welshSpeakingBusinessList);
-        ListAdapter welshSpeakingBusinessAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CymruNi);
+        ListAdapter welshSpeakingBusinessAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, printedBusinessList);
         welshSpeakingBusinessView.setAdapter(welshSpeakingBusinessAdapter);
 
 
