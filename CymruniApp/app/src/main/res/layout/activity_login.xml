@@ -33,8 +33,8 @@
         android:layout_below="@+id/usernameText"
         android:layout_alignStart="@+id/usernameText"
         android:hint="Password"
+        android:textColor="@color/textColour"
         android:textColorHint="#ffffff" />
-        android:textColor="@colors/text_color"/>
 
     <Button
         android:layout_width="wrap_content"
