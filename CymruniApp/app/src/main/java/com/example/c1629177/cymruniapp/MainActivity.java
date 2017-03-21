@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent i1 = new Intent(MainActivity.this, MapsActivity.class);;
-        welshSpeakingBusinessView = (ListView) findViewById(R.id.welshSpeakingBusinessView);
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         List<String> CymruNi = databaseAccess.getQuotes();
         databaseAccess.close();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CymruNi);
+        ListView welshSpeakingBusinessView = (ListView) findViewById(R.id.welshSpeakingBusinessList);
+        ListAdapter welshSpeakingBusinessAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CymruNi);
         welshSpeakingBusinessView.setAdapter(welshSpeakingBusinessAdapter);
 
 

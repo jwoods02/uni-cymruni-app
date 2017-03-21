@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/CymruniApp.iml" filepath="$PROJECT_DIR$/CymruniApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/gcellbeaconscanlibrary/gcellbeaconscanlibrary.iml" filepath="$PROJECT_DIR$/gcellbeaconscanlibrary/gcellbeaconscanlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gcellbeaconscanlibrary/gcellbeaconscanlibrary.iml" filepath="$PROJECT_DIR$/gcellbeaconscanlibrary/gcellbeaconscanlibrary.iml" />
     </modules>
   </component>
 </project>
