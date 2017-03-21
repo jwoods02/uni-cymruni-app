@@ -21,22 +21,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     Boolean mapReady = false;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps2);
-        Intent i1 = new Intent(MapsActivity.this, LoginActivity.class);;
-        startActivity(i1);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_maps2);
+//        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+//
+//    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps2);
+
+        Intent i = new Intent(MapsActivity.this, LoginActivity.class);
+        startActivity(i);
 
         Button btnMap = (Button) findViewById(R.id.btnMap);
         Button btnHybrid = (Button) findViewById(R.id.btnHybrid);
@@ -66,6 +65,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
             }
         });
+//
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
     /**
@@ -80,46 +83,43 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mapReady =true;
+        mapReady = true;
 
-        LatLng studentUnion = new LatLng(51.488373, -3.177478);
-        mMap.addMarker(new MarkerOptions().position(studentUnion).title("Cardiff University Student Union"));
-        CameraPosition target = CameraPosition.builder().target(studentUnion).zoom(14).build();
+        LatLng studentUnionLatLng = new LatLng(51.488373, -3.177478);
+        mMap.addMarker(new MarkerOptions().position(studentUnionLatLng).title("Cardiff University Student Union"));
+        CameraPosition target = CameraPosition.builder().target(studentUnionLatLng).zoom(14).build();
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(target));
-    }
 
-    MarkerOptions studentUnion =
-            new MarkerOptions()
-                    .position(new LatLng(51.488373, -3.177478))
-                    .title("Cardiff University Student Union")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
-                    .snippet("Fluent Welsh is spoken here");
+                mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(51.488373, -3.177478))
+                        .title("Cardiff University Student Union")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                        .snippet("Fluent Welsh is spoken here"));
 
-    MarkerOptions hoffiCoffee =
-            new MarkerOptions()
-                    .position(new LatLng(51.489635, -3.182219))
-                    .title("Hoffi Coffee")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(51.489635, -3.182219))
+                        .title("Hoffi Coffee")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
 /* this is a custom marker - the ic_audiotrack needs to be changed!!!!!!! */
-                    .snippet("Fluent Welsh is spoken here");
-
-
-    MarkerOptions costa =
-            new MarkerOptions()
-                    .position(new LatLng(51.488396, -3.178465))
-                    .title("Costa Coffee")
-                    .snippet("Beginner level Welsh is spoken here")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
-
-    MarkerOptions cafe37 =
-            new MarkerOptions()
-                    .position(new LatLng(51.488259, -3.173882))
-                    .title("Cafe 37")
-                    .snippet("Intermediate Welse is spoken here")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+                        .snippet("Fluent Welsh is spoken here"));
 
 
 
+        mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(51.488396, -3.178465))
+                        .title("Costa Coffee")
+                        .snippet("Beginner level Welsh is spoken here")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+
+
+        mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(51.488259, -3.173882))
+                        .title("Cafe 37")
+                        .snippet("Intermediate Welse is spoken here")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+
+
+    }
 
 
 }

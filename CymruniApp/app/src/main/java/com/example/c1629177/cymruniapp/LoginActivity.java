@@ -27,8 +27,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (usernameText.getText().toString().equals("admin") && passwordText.getText().toString().equals("admin")) {
                     Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(i);
                     finish();
                 }else{
                     Toast.makeText(getApplicationContext(),"Incorrect Login Details",Toast.LENGTH_SHORT).show();

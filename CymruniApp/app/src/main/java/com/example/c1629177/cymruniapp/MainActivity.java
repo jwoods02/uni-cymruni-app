@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Intent i1 = new Intent(MainActivity.this, MapsActivity.class);;
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         List<String> DBNames = databaseAccess.getNames();
@@ -70,9 +68,8 @@ public class MainActivity extends AppCompatActivity {
         GoToLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent i = new Intent(MainActivity.this, MapsActivity.class);
                 startActivity(i);
-                finish();
             }
         });
         }
