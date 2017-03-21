@@ -11,6 +11,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -87,17 +88,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(target));
     }
 
-    MarkerOptions HoffiCoffee =
+    MarkerOptions studentUnion =
             new MarkerOptions()
-            .position(new LatLng(51.489635, -3.182219))
-            .title("Hoffi Coffee");
+                    .position(new LatLng(51.488373, -3.177478))
+                    .title("Cardiff University Student Union")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                    .snippet("Fluent Welsh is spoken here");
 
-    MarkerOptions Costa =
+    MarkerOptions hoffiCoffee =
             new MarkerOptions()
-            .position(new LatLng(51.488396, -3.178465))
-            .title("Costa Coffee");
+                    .position(new LatLng(51.489635, -3.182219))
+                    .title("Hoffi Coffee")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+/* this is a custom marker - the ic_audiotrack needs to be changed!!!!!!! */
+                    .snippet("Fluent Welsh is spoken here");
 
-    
+
+    MarkerOptions costa =
+            new MarkerOptions()
+                    .position(new LatLng(51.488396, -3.178465))
+                    .title("Costa Coffee")
+                    .snippet("Beginner level Welsh is spoken here")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+
+    MarkerOptions cafe37 =
+            new MarkerOptions()
+                    .position(new LatLng(51.488259, -3.173882))
+                    .title("Cafe 37")
+                    .snippet("Intermediate Welse is spoken here")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+
 
 
 
