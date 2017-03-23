@@ -51,24 +51,25 @@ andriod:paddingBottom="16dp" tools:context=".MapsActivity">
         tools:context="com.example.c1629177.cymruniapp.MapsActivity" />
 </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <CheckBox android:id="@+id/Red"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onCheckboxClicked"/>
-        <CheckBox android:id="@+id/Orange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onCheckboxClicked"/>
-        <CheckBox android:id="@+id/Yellow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onCheckboxClicked"/>
-    </LinearLayout>
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent">-->
+        <!--<CheckBox android:id="@+id/Red"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:onClick="onCheckboxClicked"/>-->
+        <!--<CheckBox android:id="@+id/Orange"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:onClick="onCheckboxClicked"/>-->
+        <!--<CheckBox android:id="@+id/Yellow"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:onClick="onCheckboxClicked"/>-->
+    <!--</LinearLayout>-->
 
+<!-- TODO how can I get these two layouts on the page at once -->
 
 </RelativeLayout>
 

@@ -136,15 +136,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .isVisible());
     }
 
-    public void onCheckboxClicked(View view) {
-        // Is the view now checked?
-        boolean checked = ((CheckBox) view).isChecked();
-
+//    public void onCheckboxClicked(View view) {
+//        // Is the view now checked?
+//        boolean checked = ((CheckBox) view).isChecked();
+//
 //        // Check which checkbox was clicked
 //        switch(view.getId()) {
 //            case R.id.Red:
 //                if (checked)
-//                RedMarker.get[i] //TODO copy all this into a text editor then git checkout then paste it but on a new branch and figure out how I can continue the checkobox activity
+//                RedMarker.get[0];
 //                else
 //                // Remove the meat
 //                break;
@@ -161,5 +161,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                // I'm lactose intolerant
 //                break;
 //            // TODO: Veggie sandwich
-    }
+//    }
 }
