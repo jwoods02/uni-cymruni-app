@@ -98,11 +98,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         CameraPosition target = CameraPosition.builder().target(studentUnionLatLng).zoom(14).build();
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(target));
 
-        mMap.addMarker(new MarkerOptions()
+        YellowMarker.add(mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(51.488396, -3.178465))
                 .title("Costa Coffee")
                 .snippet("Beginner level Welsh is spoken here")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))));
 
 
         OrangeMarker.add(mMap.addMarker(new MarkerOptions()
