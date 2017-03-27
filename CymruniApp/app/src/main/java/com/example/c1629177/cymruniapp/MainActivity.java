@@ -24,14 +24,12 @@ public class MainActivity extends AppCompatActivity {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         List<String> DBNames = databaseAccess.getNames();
-        // List<String> DBBeacons = databaseAccess.getBeacons();
+        List<String> DBBeacons = databaseAccess.getBeacons();
         databaseAccess.close();
 
 
 
         String[] beaconsDetected = {"ABC-12D-123", "WSE-234-DBE"};
-
-        List<String> DBBeacons = Arrays.asList("ABC-12D-123", "FHD-24F-EF8", "WSE-234-DBE");
 
         List<String> printedBusinessList = new ArrayList<>();
 

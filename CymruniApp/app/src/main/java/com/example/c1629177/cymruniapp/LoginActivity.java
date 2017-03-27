@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
 
     Button submitBtn;
@@ -17,6 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+
 
         submitBtn = (Button)findViewById(R.id.submitBtn);
         usernameText = (EditText)findViewById(R.id.usernameText);
@@ -25,7 +29,13 @@ public class LoginActivity extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (usernameText.getText().toString().equals("admin") && passwordText.getText().toString().equals("admin")) {
+
+                boolean loginValid;
+                databaseAccess.open();
+                loginValid = databaseAccess.loginTest(usernameText.getText().toString(), passwordText.getText().toString());
+                databaseAccess.close();
+
+                if ( loginValid ) {
                     Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
@@ -44,4 +54,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }
