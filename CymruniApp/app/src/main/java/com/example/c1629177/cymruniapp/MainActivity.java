@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         setContentView(R.layout.activity_main);
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        List<String> DBNames = databaseAccess.getNames();
-        List<String> DBBeacons = databaseAccess.getBeacons();
+        DBNames = databaseAccess.getNames();
+        DBBeacons = databaseAccess.getBeacons();
         DBNames = databaseAccess.getNames();
         DBBeacons = databaseAccess.getBeacons();
         databaseAccess.close();
@@ -49,10 +49,6 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
 //        String[] beaconsDetected = {"ABC-12D-123", "WSE-234-DBE"};
 
         printedBusinessList = new ArrayList<>();
-
-        String[] beaconsDetected = {"ABC-12D-123", "WSE-234-DBE"};
-
-        List<String> printedBusinessList = new ArrayList<>();
 
 //        for (int i=0; i <DBNames.size(); i++) {
 //            if (Arrays.asList(beaconsDetected).contains(DBBeacons.get(i))) {
@@ -64,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         welshSpeakingBusinessAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, printedBusinessList);
         welshSpeakingBusinessView.setAdapter(welshSpeakingBusinessAdapter);
 
-       /*TODO fix this  beaconsDetected = new ArrayList<>(); */
+       beaconsDetected = new ArrayList<>();
 
         scanMan = new GCellBeaconScanManager(this);
         scanMan.enableBlueToothAutoSwitchOn(true);
