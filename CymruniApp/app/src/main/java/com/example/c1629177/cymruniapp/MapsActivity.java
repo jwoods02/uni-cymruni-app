@@ -24,9 +24,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     Boolean mapReady = false;
-    ArrayList<Marker> RedMarker = new ArrayList<>();
-    ArrayList<Marker> OrangeMarker = new ArrayList<>();
-    ArrayList<Marker> YellowMarker = new ArrayList<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MapsActivity)) return false;
+
+        MapsActivity that = (MapsActivity) o;
+
+        if (!mMap.equals(that.mMap)) return false;
+        if (!mapReady.equals(that.mapReady)) return false;
+        if (!RedMarker.equals(that.RedMarker)) return false;
+        if (!OrangeMarker.equals(that.OrangeMarker)) return false;
+        return YellowMarker.equals(that.YellowMarker);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = mMap.hashCode();
+        result = 31 * result + mapReady.hashCode();
+        result = 31 * result + RedMarker.hashCode();
+        result = 31 * result + OrangeMarker.hashCode();
+        result = 31 * result + YellowMarker.hashCode();
+        return result;
+    }
+
+    private ArrayList<Marker> RedMarker = new ArrayList<>();
+    private ArrayList<Marker> OrangeMarker = new ArrayList<>();
+    private ArrayList<Marker> YellowMarker = new ArrayList<>();
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -177,7 +203,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();
 
-//         Check which checkbox was clicked
+/* Checks which box is clicked and then changes marker visibilty */
         switch(view.getId()) {
             case R.id.Red:
                 if (checked)
