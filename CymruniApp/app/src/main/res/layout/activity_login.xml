@@ -54,4 +54,25 @@
         android:layout_alignTop="@+id/submitBtn"
         android:layout_toStartOf="@+id/submitBtn" />
 
+    <com.facebook.login.widget.LoginButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login with Facebook"
+        android:id="@+id/login_button"
+        android:layout_below="@+id/submitBtn"
+        android:layout_alignStart="@+id/passwordText"
+        android:layout_marginTop="48dp"
+        android:layout_alignEnd="@+id/submitBtn"
+        android:background="#1c37eb"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/info"
+        android:layout_below="@+id/login_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:textColor="#ffffff" />
+
 </RelativeLayout>
