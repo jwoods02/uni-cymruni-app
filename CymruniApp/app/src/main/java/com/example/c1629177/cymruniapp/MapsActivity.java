@@ -103,6 +103,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .title("Costa Coffee")
                 .snippet("Beginner level Welsh is spoken here")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))));
+        YellowMarker.add(mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(51.493076, -3.177566))
+                .title("Zi's Cafe")
+                .snippet("Beginner level Welsh is spoken here")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))));
+        YellowMarker.add(mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(51.485033, -3.175764))
+                .title("Park Place Club")
+                .snippet("Beginner level Welsh is spoken here")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))));
+        YellowMarker.add(mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(51.486180, -3.176547))
+                .title("Mock1")
+                .snippet("Beginner level Welsh is spoken here")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))));
+        YellowMarker.add(mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(51.45894, -3.342465))
+                .title("Mock2")
+                .snippet("Beginner level Welsh is spoken here")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))));
 
 
         OrangeMarker.add(mMap.addMarker(new MarkerOptions()
@@ -110,6 +130,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .title("Cafe 37")
                 .snippet("Intermediate Welsh is spoken here")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))));
+        OrangeMarker.add(mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(53.744259, -3.123882))
+                .title("Mock3")
+                .snippet("Intermediate Welsh is spoken here")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))));
+        OrangeMarker.add(mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(54.442989, -3.987882))
+                .title("Mock4")
+                .snippet("Intermediate Welsh is spoken here")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))));
+        OrangeMarker.add(mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(52.844259, -4.023882))
+                .title("Mock5")
+                .snippet("Intermediate Welsh is spoken here")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))));
+
 
         /* Filling redmarker arraylist with markers */
         RedMarker.add(mMap.addMarker(new MarkerOptions()
