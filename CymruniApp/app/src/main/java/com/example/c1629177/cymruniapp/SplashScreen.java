@@ -14,17 +14,17 @@ public class SplashScreen extends AppCompatActivity {
         Thread myThread = new Thread(){
             @Override
             public void run() {
-                try {
-
-                    Intent i = new Intent(getApplicationContext(),SplashScreen.class);
-                    startActivity(i);
-                    sleep(5000);
-                    finish();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//
+//                    Intent i = new Intent(getApplicationContext(),SplashScreen.class);
+//                    startActivity(i);
+//                    sleep(5000);
+//                    finish();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
             }
-
+//
         };
         myThread.start();
         Intent x = new Intent(

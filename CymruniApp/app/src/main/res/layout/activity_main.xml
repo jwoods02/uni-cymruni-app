@@ -33,4 +33,16 @@
         android:id="@+id/GoToLoginBtn"
         android:layout_alignParentTop="true"
         android:layout_alignEnd="@+id/welshSpeakingBusinessList" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notification"
+        android:id="@+id/popupButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/searchView"
+        android:layout_marginStart="127dp"
+        android:onClick="notificationButtonClicked" />
+
 </RelativeLayout>
