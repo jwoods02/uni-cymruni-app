@@ -12,12 +12,12 @@ public class MapsActivityTest {
 
     @Before
     public void setUp() throws Exception {
-        
+
 
     }
 
     @Test
     public void testOnCheckboxClicked() throws Exception {
-        assertArrayEquals();
+        // TODO finish this assertArrayEquals();
     }
 }
