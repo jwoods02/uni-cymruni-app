@@ -20,6 +20,14 @@ import com.gcell.ibeacon.gcellbeaconscanlibrary.GCelliBeacon;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.View;
+
 public class MainActivity extends AppCompatActivity implements GCellBeaconManagerScanEvents {
 
     GCellBeaconScanManager scanMan;
@@ -32,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
     ListView welshSpeakingBusinessView;
     ListAdapter welshSpeakingBusinessAdapter;
 
+
+
+    NotificationCompat.Builder notification;
+    private static final int uniqueID = 45612;
 
 
     @Override
@@ -47,6 +59,9 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         databaseAccess.close();
 
 //        String[] beaconsDetected = {"ABC-12D-123", "WSE-234-DBE"};
+
+        notification = new NotificationCompat.Builder(this);
+        notification.setAutoCancel(true);
 
         printedBusinessList = new ArrayList<>();
 
@@ -148,6 +163,31 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
 
     @Override
     public void locationPermissionsDenied() {
+
+    }
+
+    public void notificationButtonClicked(View view){
+        //build the notification here
+        // first one is the pictue you want to pop up.
+        notification.setSmallIcon(R.drawable.cymrunired);
+        // second one is the text that pops up
+        notification.setTicker("Cymru Ni - Local Welsh Business nearby");
+        // third tells you when it happened in mili seconds
+        notification.setWhen(System.currentTimeMillis());
+        notification.setContentTitle("Cymru Ni");
+        notification.setContentText("Local Welsh Business found nearby");
+
+
+        //where do you want the notification to go to?
+        Intent intent = new Intent(this,MainActivity.class);
+        // gives phone access to the intent
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        notification.setContentIntent(pendingIntent);
+
+        // builds notification and issues it - issue means sending it to your device.
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        nm.notify(uniqueID, notification.build());
+
 
     }
 }
