@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -31,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         FacebookSdk.setApplicationId(getString(R.string.facebook_app_id));
         setContentView(R.layout.activity_login);
+        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+
 
         submitBtn = (Button) findViewById(R.id.submitBtn);
         usernameText = (EditText) findViewById(R.id.usernameText);
@@ -39,8 +43,14 @@ public class LoginActivity extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (usernameText.getText().toString().equals("admin") && passwordText.getText().toString().equals("admin")) {
-                    Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+
+                boolean loginValid;
+                databaseAccess.open();
+                loginValid = databaseAccess.loginTest(usernameText.getText().toString(), passwordText.getText().toString());
+                databaseAccess.close();
+
+                if ( loginValid ) {
+                    Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "Incorrect Login Details", Toast.LENGTH_SHORT).show();
@@ -85,4 +95,5 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
 }

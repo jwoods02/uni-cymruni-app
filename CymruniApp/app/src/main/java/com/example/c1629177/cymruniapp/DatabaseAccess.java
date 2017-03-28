@@ -60,12 +60,29 @@ public class DatabaseAccess {
      *
      * @return a List of quotes
      */
-    public List<String> getNames() {
+
+    public List<String> getAll() {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT \"shopName-en\" FROM CymruNi", null);
+        Cursor cursor = openHelper.getReadableDatabase().rawQuery("SELECT * FROM CymruNi", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
+            list.add(cursor.getString(1));
+            list.add(cursor.getString(2));
+            list.add(cursor.getString(3));
+            list.add(cursor.getString(4));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<String> getNames() {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = openHelper.getReadableDatabase().rawQuery("SELECT * FROM CymruNi", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(2));
             cursor.moveToNext();
         }
         cursor.close();
@@ -74,15 +91,31 @@ public class DatabaseAccess {
 
     public List<String> getBeacons() {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT \"BeaconID\" FROM CymruNi", null);
+        Cursor cursor = openHelper.getReadableDatabase().rawQuery("SELECT * FROM CymruNi", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(1));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public boolean loginTest(String username, String password) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = openHelper.getReadableDatabase().rawQuery("SELECT * FROM Accounts WHERE username=\"" + username + "\" AND password=\"" + password + "\"", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
             cursor.moveToNext();
         }
         cursor.close();
-        return list;
+        if (!list.isEmpty()) {
+            return true;
+        }
+        return false;
     }
+
 }
 
 
