@@ -11,4 +11,24 @@
         android:layout_height="match_parent"
         android:src="@drawable/cymrunired"
         />
+
+    <Button
+        android:id="@+id/lang_en"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:onClick="enLangSelected"
+        android:text="English" />
+
+    <Button
+        android:id="@+id/lang_cy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/lang_en"
+        android:layout_marginBottom="20dp"
+        android:onClick="cyLangSelected"
+        android:text="Cymru" />
 </RelativeLayout>
