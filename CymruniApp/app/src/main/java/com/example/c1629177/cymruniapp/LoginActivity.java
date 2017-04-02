@@ -1,6 +1,8 @@
 package com.example.c1629177.cymruniapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.media.MediaRouteProvider;
@@ -94,6 +96,16 @@ public class LoginActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    // THIS NEEDS TO BE IN EVERY ACTIVITY FOR LOCALIZATION
+    // From http://stackoverflow.com/questions/40221711/android-context-getresources-updateconfiguration-deprecated/40704077#40704077
+    // Also from http://stackoverflow.com/questions/43160062/cannot-get-shared-prefrences-inside-custom-context-wrapper-injection/43160497#43160497
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences sharedPref = newBase.getSharedPreferences("userLang", Context.MODE_PRIVATE);
+        String lang = sharedPref.getString("lang", "");
+        super.attachBaseContext(MyContextWrapper.wrap(newBase, lang));
     }
 
 }

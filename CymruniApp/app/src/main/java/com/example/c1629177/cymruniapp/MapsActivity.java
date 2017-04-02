@@ -1,6 +1,8 @@
 package com.example.c1629177.cymruniapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -236,5 +238,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                 break;
         }
+    }
+
+    // THIS NEEDS TO BE IN EVERY ACTIVITY FOR LOCALIZATION
+    // From http://stackoverflow.com/questions/40221711/android-context-getresources-updateconfiguration-deprecated/40704077#40704077
+    // Also from http://stackoverflow.com/questions/43160062/cannot-get-shared-prefrences-inside-custom-context-wrapper-injection/43160497#43160497
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences sharedPref = newBase.getSharedPreferences("userLang", Context.MODE_PRIVATE);
+        String lang = sharedPref.getString("lang", "");
+        super.attachBaseContext(MyContextWrapper.wrap(newBase, lang));
     }
 }

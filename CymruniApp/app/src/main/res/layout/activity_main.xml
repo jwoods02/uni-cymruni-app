@@ -43,4 +43,11 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:onClick="notificationButtonClicked" />
+        android:text="Notification"
+        android:id="@+id/popupButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/searchView"
+        android:layout_marginStart="127dp"
+        android:onClick="notificationButtonClicked" />
+
 </RelativeLayout>

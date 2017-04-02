@@ -1,6 +1,8 @@
 package com.example.c1629177.cymruniapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +21,13 @@ import com.gcell.ibeacon.gcellbeaconscanlibrary.GCelliBeacon;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.View;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -40,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
     ListView welshSpeakingBusinessView;
     ListAdapter welshSpeakingBusinessAdapter;
 
+//    NotificationCompat.Builder notification;
+//    private static final int uniqueID = 45612;
+
 
 
     NotificationCompat.Builder notification;
@@ -56,7 +68,12 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         List<String> DBBeacons = databaseAccess.getBeacons();
         DBNames = databaseAccess.getNames();
         DBBeacons = databaseAccess.getBeacons();
+        DBNames = databaseAccess.getNames();
+        DBBeacons = databaseAccess.getBeacons();
         databaseAccess.close();
+
+        notification = new NotificationCompat.Builder(this);
+        notification.setAutoCancel(true);
 
 //        String[] beaconsDetected = {"ABC-12D-123", "WSE-234-DBE"};
 
@@ -79,7 +96,11 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         welshSpeakingBusinessAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, printedBusinessList);
         welshSpeakingBusinessView.setAdapter(welshSpeakingBusinessAdapter);
 
+
        /*TODO fix this  beaconsDetected = new ArrayList<>(); */
+
+     //  beaconsDetected = new ArrayList<>();
+
 
         scanMan = new GCellBeaconScanManager(this);
         scanMan.enableBlueToothAutoSwitchOn(true);
@@ -94,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
                      public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                         // Shows basic toast to show that app knows which item user has pressed.
-                         String businessPicked = "You selected " +
+                         String businessPicked = getString(R.string.you_selected) +
                                  String.valueOf(adapterView.getItemAtPosition(position));
 
                          Toast.makeText(MainActivity.this, businessPicked, Toast.LENGTH_SHORT).show();
@@ -174,8 +195,13 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         notification.setTicker("Cymru Ni - Local Welsh Business nearby");
         // third tells you when it happened in mili seconds
         notification.setWhen(System.currentTimeMillis());
+
         notification.setContentTitle("Cymru Ni");
         notification.setContentText("Local Welsh Business found nearby");
+
+        notification.setContentTitle(getString(R.string.app_name));
+        notification.setContentText(getString(R.string.business_found_nearby));
+
 
 
         //where do you want the notification to go to?
@@ -190,4 +216,15 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
 
 
     }
+
+    // THIS NEEDS TO BE IN EVERY ACTIVITY FOR LOCALIZATION
+    // From http://stackoverflow.com/questions/40221711/android-context-getresources-updateconfiguration-deprecated/40704077#40704077
+    // Also from http://stackoverflow.com/questions/43160062/cannot-get-shared-prefrences-inside-custom-context-wrapper-injection/43160497#43160497
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences sharedPref = newBase.getSharedPreferences("userLang", Context.MODE_PRIVATE);
+        String lang = sharedPref.getString("lang", "");
+        super.attachBaseContext(MyContextWrapper.wrap(newBase, lang));
+    }
+
 }
