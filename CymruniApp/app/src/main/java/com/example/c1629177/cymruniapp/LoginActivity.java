@@ -107,5 +107,4 @@ public class LoginActivity extends AppCompatActivity {
         String lang = sharedPref.getString("lang", "en");
         super.attachBaseContext(MyContextWrapper.wrap(newBase, lang));
     }
-
 }
