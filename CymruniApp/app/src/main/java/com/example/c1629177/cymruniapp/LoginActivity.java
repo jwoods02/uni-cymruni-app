@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         SharedPreferences sharedPref = newBase.getSharedPreferences("userLang", Context.MODE_PRIVATE);
-        String lang = sharedPref.getString("lang", "");
+        String lang = sharedPref.getString("lang", "en");
         super.attachBaseContext(MyContextWrapper.wrap(newBase, lang));
     }
 

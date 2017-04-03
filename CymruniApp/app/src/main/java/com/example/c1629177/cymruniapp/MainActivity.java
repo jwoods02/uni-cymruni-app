@@ -23,11 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements GCellBeaconManagerScanEvents {
 
@@ -171,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
     public void notificationButtonClicked(View view){
         //build the notification here
         // first one is the pictue you want to pop up.
-        notification.setSmallIcon(R.drawable.Cymru_Ni);
+        notification.setSmallIcon(R.drawable.cymru_ni);
         // second one is the text that pops up
         notification.setTicker("Cymru Ni - Local Welsh Business nearby");
         // third tells you when it happened in mili seconds
@@ -199,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
     @Override
     protected void attachBaseContext(Context newBase) {
         SharedPreferences sharedPref = newBase.getSharedPreferences("userLang", Context.MODE_PRIVATE);
-        String lang = sharedPref.getString("lang", "");
+        String lang = sharedPref.getString("lang", "en");
         super.attachBaseContext(MyContextWrapper.wrap(newBase, lang));
     }
 }
