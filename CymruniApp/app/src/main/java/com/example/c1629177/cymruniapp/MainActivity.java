@@ -21,6 +21,8 @@ import com.gcell.ibeacon.gcellbeaconscanlibrary.GCelliBeacon;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.support.v4.app.NotificationCompat;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
     int DBIndex;
     ListView welshSpeakingBusinessView;
     ListAdapter welshSpeakingBusinessAdapter;
+    String currentLang;
 
     NotificationCompat.Builder notification;
     private static final int uniqueID = 45612;
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         DBNames = databaseAccess.getNames();
         DBBeacons = databaseAccess.getBeacons();
         databaseAccess.close();
+
+        currentLang = Locale.getDefault().getLanguage();
 
         notification = new NotificationCompat.Builder(this);
         notification.setAutoCancel(true);
@@ -77,6 +82,10 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         scanMan.enableBlueToothAutoSwitchOn(true);
 
         scanMan.startScanningForBeacons();
+
+        forceAddBeacon("ABC-12D-123");
+
+        forceAddBeacon("WSE-234-DBE");
 
 
         // Basic OnItemClickListener to show how you can interact with user based on item clicked.
@@ -130,6 +139,24 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
 
 
                 }
+            }
+        }
+    }
+
+    public void forceAddBeacon(String currentBeacon) {
+        if(!beaconsDetected.contains(currentBeacon)) {
+            beaconsDetected.add(currentBeacon);
+
+            if (DBBeacons.contains(currentBeacon)) {
+
+                DBIndex = DBBeacons.indexOf(currentBeacon);
+
+                printedBusinessList.add(DBNames.get(DBIndex));
+                ((BaseAdapter)welshSpeakingBusinessAdapter).notifyDataSetChanged();
+
+                // ADD NOTIFACTION HERE
+
+
             }
         }
     }

@@ -44,11 +44,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public int hashCode() {
-        int result = mMap.hashCode();
-        result = 31 * result + mapReady.hashCode();
-        result = 31 * result + RedMarker.hashCode();
-        result = 31 * result + OrangeMarker.hashCode();
-        result = 31 * result + YellowMarker.hashCode();
+        int result = 0;
+        if (mMap != null) {
+            result = mMap.hashCode();
+            result = 31 * result + mapReady.hashCode();
+            result = 31 * result + RedMarker.hashCode();
+            result = 31 * result + OrangeMarker.hashCode();
+            result = 31 * result + YellowMarker.hashCode();
+        } else {
+            result = 0;
+        }
         return result;
     }
 
