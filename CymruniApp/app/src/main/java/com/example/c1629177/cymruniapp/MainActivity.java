@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
     public void notificationButtonClicked(View view){
         //build the notification here
         // first one is the pictue you want to pop up.
-        notification.setSmallIcon(R.drawable.cymrunired);
+        notification.setSmallIcon(R.drawable.Cymru_Ni);
         // second one is the text that pops up
         notification.setTicker("Cymru Ni - Local Welsh Business nearby");
         // third tells you when it happened in mili seconds
