@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 allprojects{
 
-    buildDir="C:/tmp/${rootProject.name}/${project.name}"
+//    buildDir="C:/tmp/${rootProject.name}/${project.name}"
 
 //    buildDir="C:/tmp/${rootProject.name}/${project.name}"
 

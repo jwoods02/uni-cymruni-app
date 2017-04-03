@@ -5,5 +5,8 @@
     <string name="body_info"> mewnosod welsh yma</string>
     <string name="you_selected">Ddewisoch</string>
     <string name="business_found_nearby">Canfu Busnes Cymreig lleol cyfagos</string>
+    <string name="title_activity_maps"></string>
+    <string name="incorrect_login">manylion mewngofnodi anghywir</string>
+    <string name="redirecting">Ailgyfeirio ...</string>
 
 </resources>

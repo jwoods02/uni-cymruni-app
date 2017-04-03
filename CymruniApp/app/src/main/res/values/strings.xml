@@ -7,6 +7,8 @@
     <string name="facebook_app_id">504057173316559</string>
     <string name="you_selected">You selected</string>
     <string name="business_found_nearby">Local Welsh Business found nearby</string>
+    <string name="redirecting">Redirecting...</string>
+    <string name="incorrect_login">Incorrect login details</string>
 
 
 </resources>
