@@ -11,59 +11,59 @@
     tools:context="com.example.c1629177.cymruniapp.LoginActivity">
 
     <EditText
+        android:id="@+id/usernameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/usernameText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="89dp"
-        android:hint="Username"
+        android:ems="10"
+        android:hint="@string/username"
+        android:inputType="textPassword"
         android:textColor="@color/textColour"
         android:textColorHint="#ffffff" />
 
 
     <EditText
+        android:id="@+id/passwordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/passwordText"
-        android:layout_below="@+id/usernameText"
         android:layout_alignStart="@+id/usernameText"
-        android:hint="Password"
+        android:layout_below="@+id/usernameText"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
         android:textColor="@color/textColour"
         android:textColorHint="#ffffff" />
 
     <Button
+        android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
-        android:onClick="login"
-        android:id="@+id/submitBtn"
+        android:layout_alignEnd="@+id/passwordText"
         android:layout_below="@+id/passwordText"
-        android:layout_alignEnd="@+id/passwordText" />
+        android:onClick="login"
+        android:text="@string/submit" />
 
     <Button
+        android:id="@+id/backBtn"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:id="@+id/backBtn"
         android:layout_alignTop="@+id/submitBtn"
-        android:layout_toStartOf="@+id/submitBtn" />
+        android:layout_toStartOf="@+id/submitBtn"
+        android:text="@string/back" />
 
     <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login with Facebook"
-        android:id="@+id/login_button"
-        android:layout_below="@+id/submitBtn"
-        android:layout_alignStart="@+id/passwordText"
-        android:layout_marginTop="48dp"
         android:layout_alignEnd="@+id/submitBtn"
+        android:layout_alignStart="@+id/passwordText"
+        android:layout_below="@+id/submitBtn"
+        android:layout_marginTop="48dp"
         android:background="#1c37eb"
+        android:text="@string/login_facebook"
         android:textColor="#ffffff" />
 
     <TextView

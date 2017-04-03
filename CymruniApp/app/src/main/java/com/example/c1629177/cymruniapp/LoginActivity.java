@@ -83,11 +83,11 @@ public class LoginActivity extends AppCompatActivity {
         }
         @Override
         public void onCancel(){
-            info.setText("Login attempt canceled.");
+            info.setText(getString(R.string.login_cancelled));
         }
         @Override
         public void onError(FacebookException e){
-            info.setText("Login attempt failed.");
+            info.setText(getString(R.string.login_failed));
         }
     });
     }

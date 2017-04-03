@@ -9,6 +9,17 @@
     <string name="business_found_nearby">Local Welsh Business found nearby</string>
     <string name="redirecting">Redirecting...</string>
     <string name="incorrect_login">Incorrect login details</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="back">Back</string>
+    <string name="submit">Submit</string>
+    <string name="login_facebook">Login with Facebook</string>
+    <string name="login">Login</string>
+    <string name="map">Map</string>
+    <string name="satellite">Satellite</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="login_cancelled">Login attempt cancelled</string>
+    <string name="login_failed">Login attempt failed</string>
 
 
 </resources>
