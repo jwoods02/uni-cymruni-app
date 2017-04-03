@@ -4,7 +4,8 @@ xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_paren
 android:layout_height="match_parent" android:paddingLeft="16dp"
 android:paddingRight="16dp"
 android:paddingTop="16dp"
-android:paddingBottom="16dp" tools:context=".MapsActivity">
+android:paddingBottom="16dp" tools:context=".MapsActivity"
+    android:background="#000000">
 
 
 <LinearLayout
@@ -14,14 +15,16 @@ android:paddingBottom="16dp" tools:context=".MapsActivity">
     android:layout_alignParentTop="true"
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true"
-    android:layout_alignParentBottom="true">
+    android:layout_alignParentBottom="true"
+    android:background="#000000">
     <LinearLayout
         android:orientation= "horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:textColor="@color/textColour">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -78,7 +78,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".ShopActivity" />
-        <activity android:name=".shopList"></activity>
+        <activity android:name=".shopList" />
     </application>
 
 </manifest>

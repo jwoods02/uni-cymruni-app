@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.c1629177.cymruniapp.ShopActivity">
+    tools:context="com.example.c1629177.cymruniapp.ShopActivity"
+    android:background="#000000">
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,7 +17,8 @@
         android:text="Large Text"
         android:id="@+id/Title"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@color/textColour"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,5 +27,6 @@
         android:text="Medium Text"
         android:id="@+id/Desc"
         android:layout_below="@+id/Title"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@color/textColour"/>
 </RelativeLayout>
