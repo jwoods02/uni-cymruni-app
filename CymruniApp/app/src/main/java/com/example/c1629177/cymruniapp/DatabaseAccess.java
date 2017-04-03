@@ -102,6 +102,8 @@ public class DatabaseAccess {
         return list;
     }
 
+
+
     public boolean loginTest(String username, String password) {
         List<String> list = new ArrayList<>();
         Cursor cursor = openHelper.getReadableDatabase().rawQuery("SELECT * FROM Accounts WHERE username=\"" + username + "\" AND password=\"" + password + "\"", null);
