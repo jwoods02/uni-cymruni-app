@@ -95,6 +95,12 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
 
                         Toast.makeText(MainActivity.this, businessPicked, Toast.LENGTH_SHORT).show();
 
+                        String ShopSelected = String.valueOf(adapterView.getItemAtPosition(position));
+
+                        Intent i = new Intent(getApplicationContext(), ShopActivity.class);
+                        i.putExtra("SHOP_SELECTED",ShopSelected);
+                        startActivity(i);
+
 
                     }
                 });

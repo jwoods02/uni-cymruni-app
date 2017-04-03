@@ -8,7 +8,7 @@ import android.content.Context;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class DatabaseOpenHelper extends SQLiteAssetHelper {
-    private static String DATABASE_NAME = "cymruNiDB.db";
+    private static String DATABASE_NAME = "cymruNiDB2.db";
     private static final int DATABASE_VERSION = 1;
 
     public DatabaseOpenHelper(Context context) {

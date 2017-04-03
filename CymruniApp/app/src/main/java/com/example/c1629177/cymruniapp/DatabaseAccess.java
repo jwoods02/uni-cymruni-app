@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,6 +115,21 @@ public class DatabaseAccess {
             return true;
         }
         return false;
+    }
+
+    public String getDescription(String shopSelected) {
+        String desc = null;
+        String[] parameters = new String[1];
+        parameters[0] = shopSelected;
+        Cursor cursor = database.rawQuery("SELECT shopDes-en FROM CymruNi WHERE shopName-en = ?", parameters);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Log.i("DESC", cursor.getString(0));
+            desc = (cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return desc;
     }
 
 }
