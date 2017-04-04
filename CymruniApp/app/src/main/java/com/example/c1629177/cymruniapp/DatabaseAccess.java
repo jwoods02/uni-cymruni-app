@@ -12,6 +12,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
@@ -83,7 +84,11 @@ public class DatabaseAccess {
         Cursor cursor = openHelper.getReadableDatabase().rawQuery("SELECT * FROM CymruNi", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            list.add(cursor.getString(2));
+            if( Locale.getDefault().getDisplayLanguage().equals("Cymraeg")) {
+                list.add(cursor.getString(3));
+            } else {
+                list.add(cursor.getString(2));
+            }
             cursor.moveToNext();
         }
         cursor.close();
