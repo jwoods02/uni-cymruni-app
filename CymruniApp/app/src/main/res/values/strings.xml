@@ -20,7 +20,7 @@
     <string name="hybrid">Hybrid</string>
     <string name="login_cancelled">Login attempt cancelled</string>
     <string name="login_failed">Login attempt failed</string>
-    <string name="notifaction">Notification</string>
+    <string name="notifaction">Map View</string>
 
 
 </resources>

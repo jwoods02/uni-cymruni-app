@@ -74,8 +74,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps2);
 
-        Intent i = new Intent(MapsActivity.this, LoginActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(MapsActivity.this, LoginActivity.class);
+//        startActivity(i);
 
         Button btnMap = (Button) findViewById(R.id.btnMap);
         Button btnHybrid = (Button) findViewById(R.id.btnHybrid);

@@ -51,7 +51,7 @@ public class SplashScreen extends AppCompatActivity {
         Toast.makeText(SplashScreen.this, "CY selected", Toast.LENGTH_SHORT).show();
         saveLanguage("cy");
         Intent x = new Intent(
-                SplashScreen.this, MapsActivity.class);
+                SplashScreen.this, MainActivity.class);
         startActivity(x);
     }
 

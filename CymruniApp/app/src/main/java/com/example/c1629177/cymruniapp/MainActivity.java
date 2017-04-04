@@ -53,8 +53,6 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         databaseAccess.open();
         DBNames = databaseAccess.getNames();
         DBBeacons = databaseAccess.getBeacons();
-        DBNames = databaseAccess.getNames();
-        DBBeacons = databaseAccess.getBeacons();
         databaseAccess.close();
 
         currentLang = Locale.getDefault().getLanguage();
@@ -95,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                         // Shows basic toast to show that app knows which item user has pressed.
-                        String businessPicked = getString(R.string.you_selected) +
+                        String businessPicked = getString(R.string.you_selected) + " " +
                                 String.valueOf(adapterView.getItemAtPosition(position));
 
                         Toast.makeText(MainActivity.this, businessPicked, Toast.LENGTH_SHORT).show();
@@ -114,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         GoToLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MapsActivity.class);
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(i);
             }
         });
@@ -135,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
                     printedBusinessList.add(DBNames.get(DBIndex));
                     ((BaseAdapter)welshSpeakingBusinessAdapter).notifyDataSetChanged();
 
-                    // ADD NOTIFACTION HERE
+                    notificationRequested();
 
 
                 }
@@ -154,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
                 printedBusinessList.add(DBNames.get(DBIndex));
                 ((BaseAdapter)welshSpeakingBusinessAdapter).notifyDataSetChanged();
 
-                // ADD NOTIFACTION HERE
+                notificationRequested();
 
 
             }
@@ -192,6 +190,11 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
     }
 
     public void notificationButtonClicked(View view){
+        Intent i = new Intent(MainActivity.this, MapsActivity.class);
+        startActivity(i);
+    }
+
+    public void notificationRequested(){
         //build the notification here
         // first one is the pictue you want to pop up.
         notification.setSmallIcon(R.drawable.cymru_ni);
@@ -212,11 +215,10 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         // builds notification and issues it - issue means sending it to your device.
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         nm.notify(uniqueID, notification.build());
-
-
     }
 
-    // THIS NEEDS TO BE IN EVERY ACTIVITY FOR LOCALIZATION
+
+        // THIS NEEDS TO BE IN EVERY ACTIVITY FOR LOCALIZATION
     // From http://stackoverflow.com/questions/40221711/android-context-getresources-updateconfiguration-deprecated/40704077#40704077
     // Also from http://stackoverflow.com/questions/43160062/cannot-get-shared-prefrences-inside-custom-context-wrapper-injection/43160497#43160497
     @Override

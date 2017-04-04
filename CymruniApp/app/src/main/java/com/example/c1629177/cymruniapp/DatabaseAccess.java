@@ -126,13 +126,24 @@ public class DatabaseAccess {
 
     public String getDescription(String shopSelected) {
         String desc = null;
-        String[] parameters = new String[1];
-        parameters[0] = shopSelected;
-        Cursor cursor = database.rawQuery("SELECT shopDes-en FROM CymruNi WHERE shopName-en = ?", parameters);
+        Cursor cursor;
+        if( Locale.getDefault().getDisplayLanguage().equals("Cymraeg")) {
+            cursor = openHelper.getReadableDatabase().rawQuery("SELECT * FROM CymruNi WHERE \"shopName-cym\" =  \"" + shopSelected + "\"", null);
+
+        } else {
+            cursor = openHelper.getReadableDatabase().rawQuery("SELECT * FROM CymruNi WHERE \"shopName-en\" =  \"" + shopSelected + "\"", null);
+
+        }
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Log.i("DESC", cursor.getString(0));
-            desc = (cursor.getString(0));
+            if( Locale.getDefault().getDisplayLanguage().equals("Cymraeg")) {
+                Log.i("DESC", cursor.getString(5));
+                desc = (cursor.getString(5));
+            } else {
+                Log.i("DESC", cursor.getString(4));
+                desc = (cursor.getString(4));
+            }
+
             cursor.moveToNext();
         }
         cursor.close();

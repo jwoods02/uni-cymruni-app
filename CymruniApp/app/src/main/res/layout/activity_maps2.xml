@@ -30,21 +30,21 @@ android:paddingBottom="16dp" tools:context=".MapsActivity"
             android:id="@+id/btnMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:text="@string/map" />
 
         <Button
             android:id="@+id/btnSatellite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:text="@string/satellite" />
 
         <Button
             android:id="@+id/btnHybrid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:text="@string/hybrid" />
 
         <CheckBox android:id="@+id/Orange"
