@@ -19,9 +19,7 @@
         android:layout_marginTop="89dp"
         android:ems="10"
         android:hint="@string/username"
-        android:inputType="textPassword"
-        android:textColor="@color/textColour"
-        android:textColorHint="#ffffff" />
+        android:inputType="textPassword" />
 
 
     <EditText
@@ -32,9 +30,7 @@
         android:layout_below="@+id/usernameText"
         android:ems="10"
         android:hint="@string/password"
-        android:inputType="textPassword"
-        android:textColor="@color/textColour"
-        android:textColorHint="#ffffff" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/submitBtn"
@@ -72,7 +68,6 @@
         android:id="@+id/info"
         android:layout_below="@+id/login_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp"
-        android:textColor="#ffffff" />
+        android:layout_marginTop="44dp" />
 
 </RelativeLayout>

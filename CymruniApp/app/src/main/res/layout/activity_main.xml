@@ -16,7 +16,6 @@
         android:layout_gravity="center"
         android:id="@+id/welshSpeakingBusinessList"
         android:layout_below="@+id/searchView"
-        android:textColor="@color/textColour"
         ></ListView>
 
     <SearchView
@@ -24,8 +23,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/searchView"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textColor="@color/textColour" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/GoToLoginBtn"
