@@ -19,6 +19,8 @@
     <string name="username">Enw defnyddiwr</string>
     <string name="login_cancelled">Mewngofnodi ymgais ganslo</string>
     <string name="login_failed">Methodd mewngofnodi ymgais</string>
-    <string name="notifaction">Gweld map</string>
+    <string name="notificatio">Gweld map</string>
+
+    <string name="notification">hysbysiad</string>
 
 </resources>

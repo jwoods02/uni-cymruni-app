@@ -141,6 +141,8 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         }
     }
 
+
+
     public void forceAddBeacon(String currentBeacon) {
         if(!beaconsDetected.contains(currentBeacon)) {
             beaconsDetected.add(currentBeacon);
