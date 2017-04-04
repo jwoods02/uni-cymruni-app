@@ -21,21 +21,21 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
     }
 
-        Thread myThread = new Thread() {
-            @Override
-            public void run() {
-                try {
-
-                    Intent i = new Intent(getApplicationContext(), SplashScreen.class);
-                    startActivity(i);
-                    sleep(5000);
-                    finish();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-          //  myThread.start(); //TODO error on this line
-        };
+//        Thread myThread = new Thread() {
+//            @Override
+//            public void run() {
+//                try {
+//
+//                    Intent i = new Intent(getApplicationContext(), SplashScreen.class);
+//                    startActivity(i);
+//                    sleep(5000);
+//                    finish();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//          //  myThread.start(); //TODO error on this line
+//        };
 
 
     public void enLangSelected(View view){
@@ -56,10 +56,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     public void saveLanguage(String lang){
-        SharedPreferences sharedPref = PreferenceManager
-                .getDefaultSharedPreferences(this);
-
-        SharedPreferences.Editor editor = sharedPref.edit();
+        SharedPreferences.Editor editor = getSharedPreferences("userLang", MODE_PRIVATE).edit();
         editor.putString("lang", lang);
         editor.apply();
     }

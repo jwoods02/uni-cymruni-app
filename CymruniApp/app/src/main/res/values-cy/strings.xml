@@ -5,5 +5,22 @@
     <string name="body_info"> mewnosod welsh yma</string>
     <string name="you_selected">Ddewisoch</string>
     <string name="business_found_nearby">Canfu Busnes Cymreig lleol cyfagos</string>
+    <string name="title_activity_maps"></string>
+    <string name="incorrect_login">manylion mewngofnodi anghywir</string>
+    <string name="redirecting">Ailgyfeirio ...</string>
+    <string name="back">Yn ôl</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="login">Mewngofnodi</string>
+    <string name="login_facebook">Mewngofnodi gyda Facebook</string>
+    <string name="map">Map</string>
+    <string name="password">cyfrinair</string>
+    <string name="satellite">Lloeren</string>
+    <string name="submit">Cyflwyno</string>
+    <string name="username">Enw defnyddiwr</string>
+    <string name="login_cancelled">Mewngofnodi ymgais ganslo</string>
+    <string name="login_failed">Methodd mewngofnodi ymgais</string>
+    <string name="notificatio">Gweld map</string>
+
+    <string name="notification">Gweld map</string>
 
 </resources>

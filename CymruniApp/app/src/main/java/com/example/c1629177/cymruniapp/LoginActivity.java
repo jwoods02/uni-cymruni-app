@@ -52,10 +52,10 @@ public class LoginActivity extends AppCompatActivity {
                 databaseAccess.close();
 
                 if ( loginValid ) {
-                    Toast.makeText(getApplicationContext(),"Redirecting...",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getString(R.string.redirecting),Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Incorrect Login Details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.incorrect_login), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -83,11 +83,11 @@ public class LoginActivity extends AppCompatActivity {
         }
         @Override
         public void onCancel(){
-            info.setText("Login attempt canceled.");
+            info.setText(getString(R.string.login_cancelled));
         }
         @Override
         public void onError(FacebookException e){
-            info.setText("Login attempt failed.");
+            info.setText(getString(R.string.login_failed));
         }
     });
     }
@@ -104,8 +104,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         SharedPreferences sharedPref = newBase.getSharedPreferences("userLang", Context.MODE_PRIVATE);
-        String lang = sharedPref.getString("lang", "");
+        String lang = sharedPref.getString("lang", "en");
         super.attachBaseContext(MyContextWrapper.wrap(newBase, lang));
     }
-
 }

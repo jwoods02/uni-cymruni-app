@@ -21,21 +21,11 @@ import com.gcell.ibeacon.gcellbeaconscanlibrary.GCelliBeacon;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.View;
+import java.util.Locale;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements GCellBeaconManagerScanEvents {
 
@@ -48,14 +38,11 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
     int DBIndex;
     ListView welshSpeakingBusinessView;
     ListAdapter welshSpeakingBusinessAdapter;
-
-//    NotificationCompat.Builder notification;
-//    private static final int uniqueID = 45612;
-
-
+    String currentLang;
 
     NotificationCompat.Builder notification;
     private static final int uniqueID = 45612;
+
 
 
     @Override
@@ -64,27 +51,18 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         setContentView(R.layout.activity_main);
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        List<String> DBNames = databaseAccess.getNames();
-        List<String> DBBeacons = databaseAccess.getBeacons();
-        DBNames = databaseAccess.getNames();
-        DBBeacons = databaseAccess.getBeacons();
         DBNames = databaseAccess.getNames();
         DBBeacons = databaseAccess.getBeacons();
         databaseAccess.close();
+
+        currentLang = Locale.getDefault().getLanguage();
 
         notification = new NotificationCompat.Builder(this);
         notification.setAutoCancel(true);
 
 //        String[] beaconsDetected = {"ABC-12D-123", "WSE-234-DBE"};
 
-        notification = new NotificationCompat.Builder(this);
-        notification.setAutoCancel(true);
-
         printedBusinessList = new ArrayList<>();
-
-        String[] beaconsDetected = {"ABC-12D-123", "WSE-234-DBE"};
-
-        List<String> printedBusinessList = new ArrayList<>();
 
 //        for (int i=0; i <DBNames.size(); i++) {
 //            if (Arrays.asList(beaconsDetected).contains(DBBeacons.get(i))) {
@@ -96,43 +74,49 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         welshSpeakingBusinessAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, printedBusinessList);
         welshSpeakingBusinessView.setAdapter(welshSpeakingBusinessAdapter);
 
-
-       /*TODO fix this  beaconsDetected = new ArrayList<>(); */
-
-     //  beaconsDetected = new ArrayList<>();
-
+        beaconsDetected = new ArrayList<>();
 
         scanMan = new GCellBeaconScanManager(this);
         scanMan.enableBlueToothAutoSwitchOn(true);
 
         scanMan.startScanningForBeacons();
 
+        forceAddBeacon("ABC-12D-123");
+
+        forceAddBeacon("WSE-234-DBE");
+
 
         // Basic OnItemClickListener to show how you can interact with user based on item clicked.
         welshSpeakingBusinessView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
-                     @Override
-                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                         // Shows basic toast to show that app knows which item user has pressed.
-                         String businessPicked = getString(R.string.you_selected) +
-                                 String.valueOf(adapterView.getItemAtPosition(position));
+                        String businessPicked = getString(R.string.you_selected) + " " +
+                                String.valueOf(adapterView.getItemAtPosition(position));
 
-                         Toast.makeText(MainActivity.this, businessPicked, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, businessPicked, Toast.LENGTH_SHORT).show();
+
+                        String ShopSelected = String.valueOf(adapterView.getItemAtPosition(position));
+
+                        Intent i = new Intent(getApplicationContext(), ShopActivity.class);
+                        i.putExtra("SHOP_SELECTED",ShopSelected);
+                        startActivity(i);
 
 
-                     }
-                 });
+                    }
+                });
 
         Button GoToLoginBtn = (Button) findViewById(R.id.GoToLoginBtn);
         GoToLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MapsActivity.class);
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(i);
             }
         });
-        }
+    }
 
     @Override
     public void onGCellUpdateBeaconList(List<GCelliBeacon> list) {
@@ -149,10 +133,30 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
                     printedBusinessList.add(DBNames.get(DBIndex));
                     ((BaseAdapter)welshSpeakingBusinessAdapter).notifyDataSetChanged();
 
-                    // ADD NOTIFACTION HERE
+                    notificationRequested();
 
 
                 }
+            }
+        }
+    }
+
+
+
+    public void forceAddBeacon(String currentBeacon) {
+        if(!beaconsDetected.contains(currentBeacon)) {
+            beaconsDetected.add(currentBeacon);
+
+            if (DBBeacons.contains(currentBeacon)) {
+
+                DBIndex = DBBeacons.indexOf(currentBeacon);
+
+                printedBusinessList.add(DBNames.get(DBIndex));
+                ((BaseAdapter)welshSpeakingBusinessAdapter).notifyDataSetChanged();
+
+                notificationRequested();
+
+
             }
         }
     }
@@ -188,20 +192,20 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
     }
 
     public void notificationButtonClicked(View view){
+        Intent i = new Intent(MainActivity.this, MapsActivity.class);
+        startActivity(i);
+    }
+
+    public void notificationRequested(){
         //build the notification here
         // first one is the pictue you want to pop up.
-        notification.setSmallIcon(R.drawable.cymrunired);
+        notification.setSmallIcon(R.drawable.cymru_ni);
         // second one is the text that pops up
         notification.setTicker("Cymru Ni - Local Welsh Business nearby");
         // third tells you when it happened in mili seconds
         notification.setWhen(System.currentTimeMillis());
-
-        notification.setContentTitle("Cymru Ni");
-        notification.setContentText("Local Welsh Business found nearby");
-
         notification.setContentTitle(getString(R.string.app_name));
         notification.setContentText(getString(R.string.business_found_nearby));
-
 
 
         //where do you want the notification to go to?
@@ -213,18 +217,16 @@ public class MainActivity extends AppCompatActivity implements GCellBeaconManage
         // builds notification and issues it - issue means sending it to your device.
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         nm.notify(uniqueID, notification.build());
-
-
     }
 
-    // THIS NEEDS TO BE IN EVERY ACTIVITY FOR LOCALIZATION
+
+        // THIS NEEDS TO BE IN EVERY ACTIVITY FOR LOCALIZATION
     // From http://stackoverflow.com/questions/40221711/android-context-getresources-updateconfiguration-deprecated/40704077#40704077
     // Also from http://stackoverflow.com/questions/43160062/cannot-get-shared-prefrences-inside-custom-context-wrapper-injection/43160497#43160497
     @Override
     protected void attachBaseContext(Context newBase) {
         SharedPreferences sharedPref = newBase.getSharedPreferences("userLang", Context.MODE_PRIVATE);
-        String lang = sharedPref.getString("lang", "");
+        String lang = sharedPref.getString("lang", "en");
         super.attachBaseContext(MyContextWrapper.wrap(newBase, lang));
     }
-
 }

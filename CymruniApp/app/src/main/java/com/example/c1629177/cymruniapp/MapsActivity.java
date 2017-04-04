@@ -44,11 +44,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public int hashCode() {
-        int result = mMap.hashCode();
-        result = 31 * result + mapReady.hashCode();
-        result = 31 * result + RedMarker.hashCode();
-        result = 31 * result + OrangeMarker.hashCode();
-        result = 31 * result + YellowMarker.hashCode();
+        int result = 0;
+        if (mMap != null) {
+            result = mMap.hashCode();
+            result = 31 * result + mapReady.hashCode();
+            result = 31 * result + RedMarker.hashCode();
+            result = 31 * result + OrangeMarker.hashCode();
+            result = 31 * result + YellowMarker.hashCode();
+        } else {
+            result = 0;
+        }
         return result;
     }
 
@@ -69,8 +74,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps2);
 
-        Intent i = new Intent(MapsActivity.this, LoginActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(MapsActivity.this, LoginActivity.class);
+//        startActivity(i);
 
         Button btnMap = (Button) findViewById(R.id.btnMap);
         Button btnHybrid = (Button) findViewById(R.id.btnHybrid);
@@ -239,7 +244,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
         }
     }
-
+    public void onFave(View view){
+        Intent popup = new Intent(MapsActivity.this, Pop.class);
+        startActivity(popup);
+    }
     // THIS NEEDS TO BE IN EVERY ACTIVITY FOR LOCALIZATION
     // From http://stackoverflow.com/questions/40221711/android-context-getresources-updateconfiguration-deprecated/40704077#40704077
     // Also from http://stackoverflow.com/questions/43160062/cannot-get-shared-prefrences-inside-custom-context-wrapper-injection/43160497#43160497

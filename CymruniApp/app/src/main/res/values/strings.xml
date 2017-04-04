@@ -1,12 +1,30 @@
 <resources>
     <string name="app_name">Cymru Ni</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps" translatable="false">Map</string>
     <string name="body_info"> insert english here</string>
     <!--<string name="facebook_app_id">504057173316559</string>-->
-    <string name="facebook_app_id">504057173316559</string>
+    <string name="facebook_app_id" translatable="false">504057173316559</string>
     <string name="you_selected">You selected</string>
     <string name="business_found_nearby">Local Welsh Business found nearby</string>
-
+    <string name="redirecting">Redirecting...</string>
+    <string name="incorrect_login">Incorrect login details</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="back">Back</string>
+    <string name="submit">Submit</string>
+    <string name="login_facebook">Login with Facebook</string>
+    <string name="login">Login</string>
+    <string name="map">Map</string>
+    <string name="satellite">Satellite</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="login_cancelled">Login attempt cancelled</string>
+    <string name="login_failed">Login attempt failed</string>
+    <string name="notificatio">Map View</string>
+    <string name="notification">Map View</string>
+    <string name="title_activity_fave">FaveActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+>>>>>>> db
 
 </resources>

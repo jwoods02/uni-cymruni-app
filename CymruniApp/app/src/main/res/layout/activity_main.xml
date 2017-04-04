@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.c1629177.cymruniapp.MainActivity">
+    tools:context="com.example.c1629177.cymruniapp.MainActivity"
+    >
 
     <ListView
         android:layout_width="wrap_content"
@@ -15,7 +16,6 @@
         android:layout_gravity="center"
         android:id="@+id/welshSpeakingBusinessList"
         android:layout_below="@+id/searchView"
-        android:textColor="@color/textColour"
         ></ListView>
 
     <SearchView
@@ -23,31 +23,30 @@
         android:layout_height="wrap_content"
         android:id="@+id/searchView"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textColor="@color/textColour" />
+        android:layout_alignParentStart="true" />
 
     <Button
+        android:id="@+id/GoToLoginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/GoToLoginBtn"
+        android:layout_alignEnd="@+id/welshSpeakingBusinessList"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/welshSpeakingBusinessList" />
+        android:text="@string/login" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button3"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:onClick="notificationButtonClicked" />
-        android:text="Notification"
+        android:onClick="notificationButtonClicked"
+        android:text="@string/notification" />
         android:id="@+id/popupButton"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/searchView"
         android:layout_marginStart="127dp"
         android:onClick="notificationButtonClicked" />
+
+
 
 </RelativeLayout>
