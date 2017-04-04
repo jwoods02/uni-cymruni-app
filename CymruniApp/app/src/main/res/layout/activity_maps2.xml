@@ -43,6 +43,13 @@ android:paddingBottom="16dp" tools:context=".MapsActivity">
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/hybrid" />
+        <Button
+            android:id="@+id/btnFave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onFave"
+            android:text="Fave" />
 
         <CheckBox android:id="@+id/Orange"
             android:layout_width="wrap_content"
@@ -58,6 +65,10 @@ android:paddingBottom="16dp" tools:context=".MapsActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckboxClicked"/>
+
+
+
+
         </LinearLayout>
     <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
         <!--android:orientation="horizontal"-->
