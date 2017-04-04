@@ -20,11 +20,9 @@
     <string name="hybrid">Hybrid</string>
     <string name="login_cancelled">Login attempt cancelled</string>
     <string name="login_failed">Login attempt failed</string>
-    <string name="notifaction">Notification</string>
+    <string name="notification">Notification</string>
     <string name="title_activity_fave">FaveActivity</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
 
 </resources>

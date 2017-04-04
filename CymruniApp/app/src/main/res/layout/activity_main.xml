@@ -42,7 +42,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:onClick="notificationButtonClicked"
-        android:text="@string/notifaction" />
+        android:text="@string/notification" />
         android:id="@+id/popupButton"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/searchView"
